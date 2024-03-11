@@ -99,7 +99,7 @@
         .dropdown-content {
             display: none;
             position: absolute;
-            background-color: #f9f9f9;
+            background-color: rgb(217, 217, 78);
             min-width: 160px;
             box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
             z-index: 1;
@@ -124,33 +124,34 @@
             text-decoration: none;
             display: block;
         }
-        .dropdown-button:hover .dropdown-content, .dropdown-button:active .dropdown-content {
+        .dropdown-button:hover .dropdown-content, .dropdown-button.clicked .dropdown-content {
             display: block;
         }
 
         /* Change the background color of dropdown items on hover */
         .dropdown-content a:hover {
-            background-color: #f1f1f1;
+            background-color:color-mix(in hsl shorter hue, color percentage, color percentage);
         }
 
     </style>
 </head>
 <body>
 
-<div id="mySidebar" class="sidebar">
+<div id="mySidebar" class="sidebar" >
     <h2 style="text-align: center;">
         Notes
     </h2>
     <ul>
     <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-    <a style="text-align: left;" href="https://gooseymoose.github.io/Website/Notes_Pages.html" target="_blank">Aerodynamics</a>
+    <a style="text-align: left;" href="Dimentional.pdf" target="_blank">Aerodynamics</a>
     <a href="Statics .pdf" target="_blank">Statics</a>  
-    <div class="dropdown-button">
+    <div class="dropdown-button" onmouseenter="showDropdown()" onclick="toggleClick()">
         Linear
-        <div class="dropdown-content">
+    </div>
+        <div class="dropdown-content" id="dropdownContent" onmouseleave="hideDropdown()">
             <!-- Dropdown items -->
-            <a href="Gram-Schmidt.pdf"target="_blank">Gram-Schmidt</a>
-            <a href="Change of Basis.pdf"target="_blank">Change of Basis</a>
+            <a href="Gram-Schmidt.pdf">Gram-Schmidt</a>
+            <a href="Change of Basis.pdf">Change of Basis</a>
         </div>
     </div>    
     </ul>
@@ -206,7 +207,7 @@
     <div style="text-align: center;">
         <b> Socials </b>
         <br>
-        <a href="https://github.com/gooseymoose" target="_blank">
+        <a href="https://gooseymoose.github.io/Website/Notes_Pages.html" target="_blank">
             <img src="IMG_LOGO.jpeg" width="50" height="50" alt="Image 5"style="margin-right: 20px;">
         </a>
         <a href="https://github.com/gooseymoose" target="_blank">
@@ -252,6 +253,27 @@
     function closeNav() {
         document.getElementById("mySidebar").style.width = "0";
         document.body.style.marginLeft = "0"; // Reset body margin instead of #main margin
+    }
+</script>
+<script>
+    function showDropdown() {
+        var dropdown = document.getElementById("dropdownContent");
+        dropdown.style.display = "block";
+    }
+
+    function hideDropdown() {
+        var dropdown = document.getElementById("dropdownContent");
+        var button = document.querySelector(".dropdown-button");
+
+        // Hide the dropdown only if the mouse leaves the sidebar
+        if (!button.contains(event.relatedTarget)) {
+            dropdown.style.display = "none";
+        }
+    }
+
+    function toggleClick() {
+        var button = document.querySelector(".dropdown-button");
+        button.classList.toggle("clicked");
     }
 </script>
 
