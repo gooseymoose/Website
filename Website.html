@@ -95,6 +95,44 @@
             border-radius: 5px;
             margin: 0 10px;
          }
+         /* Hide the dropdown content by default */
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #f9f9f9;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 1;
+        }
+
+        /* Style the dropdown button text */
+        .dropdown-button {
+            font-size: 20px;
+            color: #818181;
+            display: block;
+            padding: 14px 16px;
+            text-decoration: none;
+            display: inline-block;
+            cursor: pointer;
+        }
+         /* Style the dropdown items */
+        .dropdown-content a {
+            font-size: 20px;
+            color: #818181;
+            display: block;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+        }
+        .dropdown-button:hover .dropdown-content, .dropdown-button:active .dropdown-content {
+            display: block;
+        }
+
+        /* Change the background color of dropdown items on hover */
+        .dropdown-content a:hover {
+            background-color: #f1f1f1;
+        }
+
     </style>
 </head>
 <body>
@@ -104,8 +142,17 @@
         Notes
     </h2>
     <ul>
-        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-        <a style="text-align: left;" href="https://gooseymoose.github.io/Website/Notes_Pages.html" target="_blank">Aerodynamics</a>
+    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+    <a style="text-align: left;" href="https://gooseymoose.github.io/Website/Notes_Pages.html" target="_blank">Aerodynamics</a>
+    <a href="Statics .pdf" target="_blank">Statics</a>  
+    <div class="dropdown-button">
+        Linear
+        <div class="dropdown-content">
+            <!-- Dropdown items -->
+            <a href="Gram-Schmidt.pdf">Gram-Schmidt</a>
+            <a href="Change of Basis.pdf">Change of Basis</a>
+        </div>
+    </div>    
     </ul>
     <!-- Add more links here -->
 </div>
@@ -125,7 +172,7 @@
     </ul>
     
     <h2 style="text-align: center;"><b>Random Photos</b></h2>
-    <p style="text-align: center;">Random pictures from my gallery.</p>
+    <p style="text-align: center"> Random pictures from my gallery.</p>
     <div class="container">
         <div class="carousel">
             <div class="carousel-slide">
@@ -152,6 +199,24 @@
             <button class="prev" onclick="prevSlide()">Previous</button>
             <button class="next" onclick="nextSlide()">Next</button>
         </div>
+    </div>
+    <br>
+    <hr>
+    <br>
+    <div style="text-align: center;">
+        <b> Socials </b>
+        <br>
+        <a href="https://github.com/gooseymoose" target="_blank">
+            <img src="IMG_LOGO.jpeg" width="50" height="50" alt="Image 5"style="margin-right: 20px;">
+        </a>
+        <a href="https://github.com/gooseymoose" target="_blank">
+            <img src="IMG_LOGO.jpeg" width="50" height="50" alt="Image 5"style="margin-right: 20px;">
+        </a>
+        <a href="https://github.com/gooseymoose" target="_blank">
+            <img src="IMG_LOGO.jpeg" width="50" height="50" alt="Image 5">
+        </a>
+        <!-- Add more links and images as needed -->
+    </div>
     </div>
 </div>
 
