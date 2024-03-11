@@ -3,10 +3,14 @@
     <head>
         <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, intial-scale=1"> 
-    <title>Sarah :0 </title>
+    <title> Hi </title>
     <body style="background-color: beige;">
-        <h1 style="color:blue;"> THE NOTES </h1>
+        <h1 style="color:blue;"> A Webpage </h1>
         <br>
+        <h2> <b> Notes </b> </h2> 
+        <p>
+        These are my notes. They open up to pdfs. Feel free to view or to download. Thanks!
+        </p>
         <ul>
             <li> <a href="https://gooseymoose.github.io/Website/Notes_Pages.html" target="_blank"> Notes 1 </a></li>
             <li> two </li>
@@ -14,11 +18,98 @@
             <li> two </li>
         </ul>
         <br>
-        
-        <br>
-        <img src="IMG_1563.jpeg" boarder="30" width="200" height="300"> 
-        <br>
-         
+        <h2 style="text-align: center";> <b> Random Photos</b> </h2>
+        <P style="text-align: center";>
+            Random Pictures from my gallery. 
+
+        </P>
+        <style>
+          /* Style for the container */
+            .container {
+              text-align: center; /* Aligns its children elements to the center */
+          }
+          /* Style for the carousel container */
+          .carousel {
+            width: 80%;
+            margin: auto;
+            overflow: hidden;
+            position: relative;
+          }
+          
+          /* Style for the navigation buttons */
+          .carousel-nav {
+            text-align: center;
+            margin-top: 20px;
+          }
+           /* Style for the captions */
+         .caption {
+              bottom: 20px; /* Increased distance between caption and buttons */
+              left: 0;
+              right: 0;
+              text-align: center;
+              padding: 5px;
+         }
+          .prev, .next {
+            cursor: pointer;
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #333;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            margin: 0 10px;
+          }
+        </style>
+        </head>
+        <body>
+          <div class="container">
+          <div class="carousel">
+            <div class="carousel-slide">
+              <img src="Fish.jpeg" alt="Image 1" boarder="30" width="200" height="300">
+              <div class="caption"> Fishes !!! </div>
+            </div>
+            <div class="carousel-slide">
+              <img src="Dog.JPG" alt="Image 2" boarder="30" width="200" height="300">
+              <div class="caption"> DOGGGGYYYY </div>
+            </div>
+            <div class="carousel-slide">
+              <img src="Goat.jpeg" alt="Image 3" boarder="30" width="200" height="300">
+              <div class="caption"> Goat !! </div>
+            </div>
+            <div class="carousel-slide">
+                <img src="Sewer.jpeg" alt="Image 4" boarder="30" width="200" height="300">
+                <div class="caption"> Just sewer things </div>
+              </div>
+            <!-- Add more slides as needed -->
+          </div>
+          
+          <div class="carousel-nav">
+            <button class="prev" onclick="prevSlide()">Previous</button>
+            <button class="next" onclick="nextSlide()">Next</button>
+          </div>
+          
+          <script>
+            let slideIndex = 0;
+            showSlide(slideIndex);
+            
+            function prevSlide() {
+              showSlide(slideIndex -= 1);
+            }
+            
+            function nextSlide() {
+              showSlide(slideIndex += 1);
+            }
+            
+            function showSlide(n) {
+              const slides = document.getElementsByClassName("carousel-slide");
+              if (n >= slides.length) { slideIndex = 0; }
+              if (n < 0) { slideIndex = slides.length - 1; }
+              for (let i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";
+              }
+              slides[slideIndex].style.display = "block";
+            }
+          </script>
     </body>
 </html>
 
