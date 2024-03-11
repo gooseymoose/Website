@@ -272,8 +272,18 @@
     }
 
     function toggleClick() {
+        var dropdown = document.getElementById("dropdownContent");
         var button = document.querySelector(".dropdown-button");
+        
+        // Toggle the "clicked" class
         button.classList.toggle("clicked");
+        
+        // Toggle the display of the dropdown menu
+        if (dropdown.style.display === "block") {
+            dropdown.style.display = "none";
+        } else {
+            dropdown.style.display = "block";
+        }
     }
 </script>
 
