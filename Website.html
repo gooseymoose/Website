@@ -1,43 +1,78 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, intial-scale=1"> 
-    <title> Hi </title>
-    <body style="background-color: beige;">
-        <h1 style="color:blue;"> A Webpage </h1>
-        <br>
-        <h2> <b> Notes </b> </h2> 
-        <p>
-        These are my notes. They open up to pdfs. Feel free to view or to download. Thanks!
-        </p>
-        <ul>
-            <li> <a href="https://gooseymoose.github.io/Website/Notes_Pages.html" target="_blank"> Notes 1 </a></li>
-            <li> two </li>
-            <li> one </li>
-            <li> two </li>
-        </ul>
-        <br>
-        <h2 style="text-align: center";> <b> Random Photos</b> </h2>
-        <P style="text-align: center";>
-            Random Pictures from my gallery. 
-
-        </P>
-        <style>
-          /* Style for the container */
-            .container {
-              text-align: center; /* Aligns its children elements to the center */
-          }
-          /* Style for the carousel container */
-          .carousel {
-            width: 80%;
-            margin: auto;
-            overflow: hidden;
-            position: relative;
-          }
-          
-          /* Style for the navigation buttons */
-          .carousel-nav {
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1"> 
+    <title>Hi</title>
+    <style>
+        .container {
+            text-align: center;
+        }
+        body {
+            background-color: beige;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            overflow-x: hidden; /* Prevent horizontal scrolling */
+        }
+        .sidebar {
+            width: 0; /* Adjust as needed */
+            height: 100%;
+            position: fixed;
+            z-index: 1;
+            top: 0;
+            left: 0;
+            background-color: #ecec7b;
+            overflow-x: hidden;
+            transition: 0.5s;
+            padding-top: 60px;
+        }
+        .sidebar a {
+            padding: 10px 15px;
+            text-decoration: none;
+            font-size: 20px;
+            color: #818181;
+            display: block;
+            transition: 0.1s;
+        }
+        .sidebar a:hover {
+            color: #f1f1f1;
+        }
+        .sidebar .closebtn {
+            position: absolute;
+            top: 0;
+            right: 25px;
+            font-size: 36px;
+            margin-left: 50px;
+        }
+        .openbtn {
+            font-size: 20px;
+            cursor: pointer;
+            background-color: #333;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+        }
+        .openbtn:hover {
+            background-color: #848484;
+        }
+        #main {
+            padding: 16px;
+            margin-left: 10px;
+            margin-right: 10px;
+            width: calc(100%); /* Adjusted width */
+            overflow-y: auto; /* Enable vertical scrolling */
+        }
+        p {
+            max-width: calc(100% - 32px); /* Ensure paragraphs do not exceed the width of the webpage */
+            margin-bottom: 10px; /* Add some spacing between paragraphs */
+            word-wrap: break-word; /* Wrap long words to prevent overflow */
+        }
+        .carousel-slide img {
+            width: 200px; /* Adjust the width as desired */
+            height: auto; /* Maintain aspect ratio */
+        }
+         /* Style for the navigation buttons */
+         .carousel-nav {
             text-align: center;
             margin-top: 20px;
           }
@@ -49,7 +84,8 @@
               text-align: center;
               padding: 5px;
          }
-          .prev, .next {
+
+         .prev, .next {
             cursor: pointer;
             display: inline-block;
             padding: 10px 20px;
@@ -58,66 +94,101 @@
             border: none;
             border-radius: 5px;
             margin: 0 10px;
-          }
-        </style>
-        </head>
-        <body>
-          <div class="container">
-          <div class="carousel">
+         }
+    </style>
+</head>
+<body>
+
+<div id="mySidebar" class="sidebar">
+    <h2 style="text-align: center;">
+        Notes
+    </h2>
+    <ul>
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+        <a style="text-align: left;" href="https://gooseymoose.github.io/Website/Notes_Pages.html" target="_blank">Aerodynamics</a>
+    </ul>
+    <!-- Add more links here -->
+</div>
+
+<div id="main">
+
+    <h1 style="color: #333;">A Webpage</h1>
+    <button class="openbtn" onclick="openNav()">☰</button>
+    <p>
+        Hello this website is still in progress. I plan to upload my portfolio,
+        projects and more cool stuff but for now, you can look at some pictures.
+        Also, feel free to click on the sidebar to look at notes. They are uploaded
+        as pdf so feel free to view or download. 
+        <br> 
+        Thanks !!
+    </p>
+    </ul>
+    
+    <h2 style="text-align: center;"><b>Random Photos</b></h2>
+    <p style="text-align: center;">Random pictures from my gallery.</p>
+    <div class="container">
+        <div class="carousel">
             <div class="carousel-slide">
-              <img src="Fish.jpeg" alt="Image 1" boarder="30" width="200" height="300">
-              <div class="caption"> Fishes !!! </div>
+                <img src="Fish.jpeg" alt="Image 1">
+                <div class="caption">Fishes !!!</div>
             </div>
             <div class="carousel-slide">
-              <img src="Dog.JPG" alt="Image 2" boarder="30" width="200" height="300">
-              <div class="caption"> DOGGGGYYYY </div>
+                <img src="Dog.JPG" alt="Image 2">
+                <div class="caption">DOGGGGYYYY</div>
             </div>
             <div class="carousel-slide">
-              <img src="Goat.jpeg" alt="Image 3" boarder="30" width="200" height="300">
-              <div class="caption"> Goat !! </div>
+                <img src="Goat.jpeg" alt="Image 3">
+                <div class="caption">Goat !!</div>
             </div>
             <div class="carousel-slide">
-                <img src="Sewer.jpeg" alt="Image 4" boarder="30" width="200" height="300">
-                <div class="caption"> Just sewer things </div>
-              </div>
+                <img src="Sewer.jpeg" alt="Image 4">
+                <div class="caption">Just sewer things</div>
+            </div>
             <!-- Add more slides as needed -->
-          </div>
-          
-          <div class="carousel-nav">
+
+        </div>
+        
+        <div class="carousel-nav">
             <button class="prev" onclick="prevSlide()">Previous</button>
             <button class="next" onclick="nextSlide()">Next</button>
-          </div>
-          
-          <script>
-            let slideIndex = 0;
-            showSlide(slideIndex);
-            
-            function prevSlide() {
-              showSlide(slideIndex -= 1);
-            }
-            
-            function nextSlide() {
-              showSlide(slideIndex += 1);
-            }
-            
-            function showSlide(n) {
-              const slides = document.getElementsByClassName("carousel-slide");
-              if (n >= slides.length) { slideIndex = 0; }
-              if (n < 0) { slideIndex = slides.length - 1; }
-              for (let i = 0; i < slides.length; i++) {
-                slides[i].style.display = "none";
-              }
-              slides[slideIndex].style.display = "block";
-            }
-          </script>
-    </body>
+        </div>
+    </div>
+</div>
+
+<script>
+    let slideIndex = 0;
+    showSlide(slideIndex);
+    
+    function prevSlide() {
+        showSlide(slideIndex -= 1);
+    }
+    
+    function nextSlide() {
+        showSlide(slideIndex += 1);
+    }
+    
+    function showSlide(n) {
+        const slides = document.getElementsByClassName("carousel-slide");
+        if (n >= slides.length) { slideIndex = 0; }
+        if (n < 0) { slideIndex = slides.length - 1; }
+        for (let i = 0; i < slides.length; i++) {
+            slides[i].style.display = "none";
+        }
+        slides[slideIndex].style.display = "block";
+    }
+</script>
+
+<script>
+    function openNav() {
+        document.getElementById("mySidebar").style.width = "250px";
+        document.body.style.marginLeft = "250px"; // Adjust body margin instead of #main margin
+    }
+    
+    function closeNav() {
+        document.getElementById("mySidebar").style.width = "0";
+        document.body.style.marginLeft = "0"; // Reset body margin instead of #main margin
+    }
+</script>
+
+</body>
 </html>
-
-
-
-
-
-
-
-
-
