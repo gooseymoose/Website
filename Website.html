@@ -60,12 +60,18 @@
             background-color: #848484;
         }
         #main {
-            padding: 16px;
-            margin-left: 10px;
-            margin-right: 10px;
-            width: calc(100%); /* Adjusted width */
-            overflow-y: auto; /* Enable vertical scrolling */
-        }
+        padding: 16px;
+        margin-left: auto;
+        margin-right: auto;
+        max-width: calc(100% - 20px); /* Adjusted max-width */
+        overflow-y: auto; /* Enable vertical scrolling */
+    }
+    p, h1, h2 {
+        max-width: calc(100% - 32px);
+        margin-left: auto;
+        margin-right: auto;
+        word-wrap: break-word;
+    }
         p {
             max-width: calc(100% - 32px); /* Ensure paragraphs do not exceed the width of the webpage */
             margin-bottom: 10px; /* Add some spacing between paragraphs */
