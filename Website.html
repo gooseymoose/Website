@@ -51,6 +51,10 @@
             color: white;
             padding: 10px 15px;
             border: none;
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            z-index: 2; /* Ensure button stays on top of other content */
         }
         .openbtn:hover {
             background-color: #848484;
@@ -178,16 +182,14 @@
         </ul>
     </div>
     
+    <button class="openbtn" onclick="openNav()" style="position: absolute; top: 30px; left: 20px;">☰</button>
     
-    
-    
-<div id="main">
+    <div id="main" style="margin-left: 70px;">
 
-    <h1 style="color: #333;">A Webpage</h1>
-    <button class="openbtn" onclick="openNav()">☰</button>
-    <p>
+    <h1 style="color: #333; display: inline-block;">A Webpage</h1>
+    
+    <p> 
         Hi! Welcome to my website!
-        <br> 
         Thanks !!
     </p>
     </ul>
@@ -255,13 +257,10 @@
     <div style="text-align: center;">
         <b> Socials </b>
         <br>
-        <a href="https://gooseymoose.github.io/Website/Notes_Pages.html" target="_blank">
-            <img src="IMG_LOGO.jpeg" width="50" height="50" alt="Image 5" style="margin-right: 20px;">
-        </a><a href="https://github.com/gooseymoose" target="_blank">
-            <img src="IMG_LOGO.jpeg" width="50" height="50" alt="Image 5" style="margin-right: 20px;">
-        </a><a href="https://github.com/gooseymoose" target="_blank">
-            <img src="IMG_LOGO.jpeg" width="50" height="50" alt="Image 5" style="margin-right: 20px;">
-        </a>
+        <br>
+        <a href="https://gooseymoose.github.io/Website/Notes_Pages.html" target="_blank"><img src="IMG_LOGO.jpeg" width="50" height="50" style="margin-right: 20px;" alt="Image 1"></a>
+        <a href="https://github.com/gooseymoose" target="_blank"><img src="Github.png" width="50" height="50" style="margin-right: 20px;" alt="Image 2"></a>
+        <a href="https://github.com/gooseymoose" target="_blank"><img src="IMG_LOGO.jpeg" width="50" height="50" style="margin-right: 20px;" alt="Image 1"></a>
     </div>
        
         <!-- Add more links and images as needed -->
