@@ -137,36 +137,56 @@
 </head>
 <body>
 
-<div id="mySidebar" class="sidebar" >
-    <h2 style="text-align: center;">
-        Notes
-    </h2>
-    <ul>
-    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-    <a style="text-align: left;" href="Dimentional.pdf" target="_blank">Aerodynamics</a>
-    <a href="Statics .pdf" target="_blank">Statics</a>  
-    <div class="dropdown-button" onmouseenter="showDropdown()" onclick="toggleClick()">
-        Linear
+    <div id="mySidebar" class="sidebar">
+        <h2 style="text-align: center;">All</h2>
+        <ul>
+            <li class="dropdown-button" onmouseleave="hideDropdown('notes')" onclick="toggleClick('notes')">
+                Notes
+                <div class="dropdown-content" id="dropdownContent-notes" onmouseenter="showDropdown('notes')" onmouseleave="hideDropdown('notes')">
+                    <a style="text-align: left;" href="Dimentional.pdf" target="_blank">Aerodynamics</a>
+                    <a href="Statics.pdf" target="_blank">Statics</a>
+                    <div class="dropdown-button" onmouseenter="showDropdown('linear')" onmouseleave="hideDropdown('linear')" onclick="toggleClick('linear')">
+                        Linear
+                        <div class="dropdown-content" id="dropdownContent-linear" style="display: none;" onmouseenter="showDropdown('linear')" onmouseleave="hideDropdown('linear')">
+                            <!-- Dropdown items -->
+                            <a href="Gram-Schmidt.pdf" target="_blank">Gram-Schmidt</a>
+                            <a href="Change of Basis.pdf" target="_blank">Change of Basis</a>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="dropdown-button" onmouseenter="showDropdown('Others')" onmouseleave="hideDropdown('Others')" onclick="toggleClick('Others')">
+                        Others
+                        <div class="dropdown-content" id="dropdownContent-anotherMenu" style="display: none;" onmouseenter="showDropdown('Others')" onmouseleave="hideDropdown('Others')">
+                            <!-- Dropdown items -->
+                            <a href="Menu-1.pdf" target="_blank"> More to come</a>
+                            <a href="Menu-1.pdf" target="_blank"> More to come</a> 
+                        </div>
+                    </div>
+                </div>
+            </li>
+            <br>
+            <li class="dropdown-button" onmouseleave="hideDropdown('Projects')" onclick="toggleClick('Projects')">
+                Projects
+                <div class="dropdown-content" id="dropdownContent-Projects" onmouseenter="showDropdown('Projects')" onmouseleave="hideDropdown('Projects')">
+                    <a style="text-align: left;" href="DAPL.pdf" target="_blank">DAPL power pipe analysis</a>
+                    <a style="text-align: left;" href="Thermo.pdf" target="_blank">Heat Transfer of Microwaves </a>
+                </div>
+            </li>
+            <li class="dropdown-button" onmouseleave="hideDropdown('Portfolio')" onclick="toggleClick('Portfolio')">
+                Portfolio
+            </li>
+        </ul>
     </div>
-        <div class="dropdown-content" id="dropdownContent" onmouseleave="hideDropdown()">
-            <!-- Dropdown items -->
-            <a href="Gram-Schmidt.pdf">Gram-Schmidt</a>
-            <a href="Change of Basis.pdf">Change of Basis</a>
-        </div>
-    </div>    
-    </ul>
-    <!-- Add more links here -->
-</div>
-
+    
+    
+    
+    
 <div id="main">
 
     <h1 style="color: #333;">A Webpage</h1>
     <button class="openbtn" onclick="openNav()">☰</button>
     <p>
-        Hello this website is still in progress. I plan to upload my portfolio,
-        projects and more cool stuff but for now, you can look at some pictures.
-        Also, feel free to click on the sidebar to look at notes. They are uploaded
-        as pdf so feel free to view or download. 
+        Hi! Welcome to my website!
         <br> 
         Thanks !!
     </p>
@@ -208,14 +228,14 @@
         <b> Socials </b>
         <br>
         <a href="https://gooseymoose.github.io/Website/Notes_Pages.html" target="_blank">
-            <img src="IMG_LOGO.jpeg" width="50" height="50" alt="Image 5"style="margin-right: 20px;">
+            <img src="IMG_LOGO.jpeg" width="50" height="50" alt="Image 5" style="margin-right: 20px;">
+        </a><a href="https://github.com/gooseymoose" target="_blank">
+            <img src="IMG_LOGO.jpeg" width="50" height="50" alt="Image 5" style="margin-right: 20px;">
+        </a><a href="https://github.com/gooseymoose" target="_blank">
+            <img src="IMG_LOGO.jpeg" width="50" height="50" alt="Image 5" style="margin-right: 20px;">
         </a>
-        <a href="https://github.com/gooseymoose" target="_blank">
-            <img src="IMG_LOGO.jpeg" width="50" height="50" alt="Image 5"style="margin-right: 20px;">
-        </a>
-        <a href="https://github.com/gooseymoose" target="_blank">
-            <img src="IMG_LOGO.jpeg" width="50" height="50" alt="Image 5">
-        </a>
+    </div>
+       
         <!-- Add more links and images as needed -->
     </div>
     </div>
@@ -245,9 +265,14 @@
 </script>
 
 <script>
-    function openNav() {
-        document.getElementById("mySidebar").style.width = "250px";
-        document.body.style.marginLeft = "250px"; // Adjust body margin instead of #main margin
+      function openNav() {
+        var sidebar = document.getElementById("mySidebar");
+        if (sidebar.style.width === "250px") {
+            closeNav();
+        } else {
+            sidebar.style.width = "250px";
+            document.body.style.marginLeft = "250px"; // Adjust body margin instead of #main margin
+        }
     }
     
     function closeNav() {
@@ -256,36 +281,74 @@
     }
 </script>
 <script>
-    function showDropdown() {
-        var dropdown = document.getElementById("dropdownContent");
+    let dropdownMenus = {};
+
+    function showDropdown(menu) {
+        var dropdown = document.getElementById("dropdownContent-" + menu);
         dropdown.style.display = "block";
+        adjustDropdownPosition(menu);
     }
 
-    function hideDropdown() {
-        var dropdown = document.getElementById("dropdownContent");
-        var button = document.querySelector(".dropdown-button");
-
-        // Hide the dropdown only if the mouse leaves the sidebar
-        if (!button.contains(event.relatedTarget)) {
+    function hideDropdown(menu) {
+        var dropdown = document.getElementById("dropdownContent-" + menu);
+        if (!dropdown.contains(event.relatedTarget)) {
             dropdown.style.display = "none";
+            resetDropdownPosition(menu);
         }
     }
 
-    function toggleClick() {
-        var dropdown = document.getElementById("dropdownContent");
-        var button = document.querySelector(".dropdown-button");
-        
-        // Toggle the "clicked" class
-        button.classList.toggle("clicked");
-        
+    function toggleClick(menu) {
+        var dropdown = document.getElementById("dropdownContent-" + menu);
+
         // Toggle the display of the dropdown menu
-        if (dropdown.style.display === "block") {
-            dropdown.style.display = "none";
+        if (menu in dropdownMenus) {
+            dropdownMenus[menu].clicked = !dropdownMenus[menu].clicked;
+            if (dropdownMenus[menu].clicked) {
+                dropdown.style.display = "block";
+                adjustDropdownPosition(menu);
+            } else {
+                dropdown.style.display = "none";
+                resetDropdownPosition(menu);
+            }
         } else {
+            dropdownMenus[menu] = { clicked: true };
             dropdown.style.display = "block";
+            adjustDropdownPosition(menu);
+        }
+    }
+
+    function adjustDropdownPosition(menu) {
+        var dropdown = document.getElementById("dropdownContent-" + menu);
+        var dropdownHeight = dropdown.offsetHeight;
+
+        // Adjust the top margin of the menus below the opened dropdown menu
+        var siblingMenus = dropdown.parentElement.parentElement.nextElementSibling;
+        while (siblingMenus) {
+            siblingMenus.style.marginTop = dropdownHeight + "px";
+            var nestedDropdown = siblingMenus.querySelector(".dropdown-content");
+            if (nestedDropdown) {
+                var nestedMenu = nestedDropdown.getAttribute("id").replace("dropdownContent-", "");
+                adjustDropdownPosition(nestedMenu);
+            }
+            siblingMenus = siblingMenus.nextElementSibling;
+        }
+    }
+
+    function resetDropdownPosition(menu) {
+        var siblingMenus = document.getElementById("dropdownContent-" + menu).parentElement.parentElement.nextElementSibling;
+        while (siblingMenus) {
+            siblingMenus.style.marginTop = "0";
+            var nestedDropdown = siblingMenus.querySelector(".dropdown-content");
+            if (nestedDropdown) {
+                var nestedMenu = nestedDropdown.getAttribute("id").replace("dropdownContent-", "");
+                resetDropdownPosition(nestedMenu);
+            }
+            siblingMenus = siblingMenus.nextElementSibling;
         }
     }
 </script>
+
+
 
 </body>
 </html>
